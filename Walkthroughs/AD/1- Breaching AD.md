@@ -1,7 +1,5 @@
 # Breaching Active Directory
 
-![Pasted image 20261019105516](assets/pasted-image-20261019105516.png)
-
 ![Pasted image 20261019145535](assets/pasted-image-20261019145535.png)
 
 > [!Resume]
