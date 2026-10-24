@@ -2,10 +2,6 @@
 
 ## Learning path
 
-### Active Directory Basics
-
-[Room notes](Walkthroughs/AD/Active%20Directory%20Basics.md)
-
 ### 1- Breaching Active Directory
 
 [Full walkthrough](Walkthroughs/AD/1-%20Breaching%20AD.md)
