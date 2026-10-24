@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/ad-logo.png" alt="Compromising Active Directory logo" width="180">
+</p>
+
 # Compromising Active Directory
 
 ## Learning path
