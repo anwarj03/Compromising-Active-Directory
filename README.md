@@ -4,6 +4,25 @@
 
 # Compromising Active Directory
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Active%20Directory-0078D4?style=flat-square&logo=windows&logoColor=white" alt="Active Directory">
+  <img src="https://img.shields.io/badge/TryHackMe-C11111?style=flat-square&logo=tryhackme&logoColor=white" alt="TryHackMe">
+  <img src="https://img.shields.io/badge/Cybersecurity-111827?style=flat-square" alt="Cybersecurity">
+  <img src="https://img.shields.io/badge/Red%20Team-991B1B?style=flat-square" alt="Red Team">
+  <img src="https://img.shields.io/badge/Windows%20Security-0078D4?style=flat-square&logo=windows&logoColor=white" alt="Windows Security">
+</p>
+
+## Technologies and techniques
+
+| Area | Covered in these notes |
+| --- | --- |
+| **Active Directory protocols** | LDAP, Kerberos, NTLM/NetNTLM/NTLMv2, SMB, DNS, LLMNR, NBT-NS, and WPAD |
+| **Tools and scripts** | Responder, Hydra, Hashcat, PowerShell/PowerPXE, nslookup, and custom Python scripts |
+| **Windows deployment and credentials** | PXE/MDT, configuration-file credential discovery, and McAfee SiteList password decryption |
+| **Practice environment** | TryHackMe AttackBox and the Compromising Active Directory learning path |
+
+The tags above summarize the repository's focus; the technologies table lists tools and protocols documented in the walkthrough.
+
 ## Learning path
 
 ### 1- Breaching Active Directory
