@@ -115,7 +115,76 @@ On a computer, programs sometimes save their login information in files. The McA
 
 ### 2- Enumerating Active Directory
 
-[Room notes](Walkthroughs/AD/2-%20Enumerating%20Active%20Directory.md)
+[Full walkthrough](Walkthroughs/AD/2-%20Enumerating%20Active%20Directory.md)
+
+#### The Big Picture: Now that you have a badge, what can you learn about the building?
+
+Back to the office analogy. In the last room you got **one employee's badge**. This room is about **reading the building's internal records with that badge**: who works there, what groups they belong to, what the password rules are, and where the paths to the top office (Domain Admin) run.
+
+Think of it like this: you're a visitor with a guest badge. You can't open the executive office, but you _can_ read the directory in the lobby, the org chart on the wall, and the building's rulebook. That information tells you exactly where to go next.
+
+**Key idea:** enumeration = gathering information with a valid login. It is a map-making step, not the break-in itself.
+
+---
+
+#### The 4 Ways to Read the Records
+
+##### Method 1: Mmc (the visual org chart)
+
+**Analogy:** A window that shows the company directory with folders for each department.
+
+- You open the AD management tools on a Windows machine that is connected to the domain.
+- You click through the departments, look at users, and check which groups each user belongs to.
+- It's easy to use, but you need a desktop session (RDP) to use it.
+
+##### Method 2: `net` commands (the quick phone call)
+
+**Analogy:** Calling the front desk and asking short questions: "Who works here?" "Who is in the Admins group?" "What are the password rules?"
+
+- Commands like `net user /domain`, `net group /domain`, `net accounts /domain`.
+- Simple, built into Windows, and not usually monitored. Good when you only have a command prompt, for example through a phishing payload.
+- Limitation: some output gets cut off, for example when a user is in more than ten groups.
+
+##### Method 3: PowerShell (the detailed file request)
+
+**Analogy:** Asking the records office for a precise report, with filters, instead of a quick question.
+
+- Cmdlets like `Get-ADUser`, `Get-ADGroup`, `Get-ADGroupMember`, `Get-ADDomain`.
+- Returns much more detail than `net`.
+- Limitation: defenders watch PowerShell closely, and you may need to install the AD tools first.
+
+##### Method 4: BloodHound (the map of routes)
+
+**Analogy:** Instead of a list of rooms, you get a floor plan with arrows showing "if you get into room A, you can reach room B, then the executive office."
+
+- **SharpHound** is the collector. It walks the domain and saves the data as a ZIP file of JSON.
+- **BloodHound** is the viewer. It loads that data into a graph database (Neo4j) and draws the attack paths.
+- Its famous idea: _"Defenders think in lists, attackers think in graphs."_
+- Limitation: SharpHound is noisy and often caught by antivirus or EDR.
+
+---
+
+#### Concepts You Must Understand
+
+**1. Why DNS matters.** Kerberos tickets are tied to hostnames, not IP addresses. If DNS is broken, your tools fail. When something doesn't work, check DNS first.
+
+**2. Hostname vs IP authentication.** Using a hostname (`\\za.tryhackme.com\SYSVOL`) makes Windows use Kerberos. Using an IP (`\\<DC IP>\SYSVOL`) forces NTLM. Defenders may watch for certain Kerberos attacks, so switching to NTLM can be a stealth trick.
+
+**3. Runas /netonly.** This injects your stolen credentials into the network side of a process without making your computer domain-joined. Local commands use your own account; network connections use the stolen one.
+
+**4. Password policy matters for spraying.** `net accounts /domain` tells you the lockout threshold and the password rules. This tells you how many guesses are safe before accounts lock.
+
+**5. Nested groups hide power.** A user in "Tier 0 Admins" is effectively a Domain Admin if that group is nested inside "Domain Admins." BloodHound finds these hidden paths automatically.
+
+**6. Sessions change, structure doesn't.** The AD structure is fairly stable, but who is logged in changes all the time. Re-run session collection regularly.
+
+---
+
+#### The 3 Things to Remember Most
+
+1. **Four tools, four levels of detail:** MMC (visual), `net` (quick, stealthy), PowerShell (detailed), BloodHound (attack paths).
+2. **BloodHound shows paths, not lists.** Know that SharpHound collects and BloodHound visualizes.
+3. **DNS and Kerberos vs NTLM** are the reasons behind many "it doesn't work" moments.
 
 ### 3- Lateral Movement and Pivoting
 
