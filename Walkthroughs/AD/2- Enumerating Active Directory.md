@@ -379,7 +379,7 @@ Using our SSH terminal, we can upgrade it to a PowerShell terminal using the fol
 
 We can use the `Get-ADUser` cmdlet to enumerate AD users:
 
-==🟡SSH PowerShell==
+SSH PowerShell
 
 ```markup
 PS C:\> Get-ADUser -Identity gordon.stevens -Server za.tryhackme.com -Properties *
@@ -404,7 +404,7 @@ The parameters are used for the following:
 
 For most of these cmdlets, we can also use the `-Filter` parameter that allows more control over enumeration and use the `Format-Table` cmdlet to display the results such as the following neatly:
 
-==🟡SSH PowerShell==
+SSH PowerShell
 
 ```markup
 PS C:\> Get-ADUser -Filter 'Name -like "*stevens"' -Server za.tryhackme.com | Format-Table Name,SamAccountName -A
@@ -422,8 +422,7 @@ gordon.stevens   gordon.stevens
 
 We can use the `Get-ADGroup` cmdlet to enumerate AD groups:
 
-==🟡SSH PowerShell==
-
+SSH PowerShell
 ```markup
 PS C:\> Get-ADGroup -Identity Administrators -Server za.tryhackme.com
 
@@ -440,7 +439,7 @@ SID               : S-1-5-32-544
 
 We can also enumerate group membership using the `Get-ADGroupMember` cmdlet:
 
-==🟡SSH PowerShell==
+SSH PowerShell
 
 ```markup
 PS C:\> Get-ADGroupMember -Identity Administrators -Server za.tryhackme.com
@@ -466,7 +465,7 @@ SID               : S-1-5-21-3330634377-1326264276-632209373-500
 
 A more generic search for any AD objects can be performed using the `Get-ADObject` cmdlet. For example, if we are looking for all AD objects that were changed after a specific date:
 
-==🟡SSH PowerShell==
+SSH PowerShell
 
 ```markup
 PS C:\> $ChangeDate = New-Object DateTime(2022, 02, 28, 12, 00, 00)
