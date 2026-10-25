@@ -21,7 +21,7 @@
 | **Windows deployment and credentials** | PXE/MDT, configuration-file credential discovery, and McAfee SiteList password decryption |
 | **Practice environment** | TryHackMe AttackBox and the Compromising Active Directory learning path |
 
-The tags above summarize the repository's focus; the technologies table lists tools and protocols documented in the walkthrough.
+The technologies table lists tools and protocols documented in the walkthrough.
 
 ## Learning path
 
