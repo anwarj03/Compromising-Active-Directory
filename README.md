@@ -16,9 +16,10 @@
 
 | Area | Covered in these notes |
 | --- | --- |
-| **Active Directory protocols** | LDAP, Kerberos, NTLM/NetNTLM/NTLMv2, SMB, DNS, LLMNR, NBT-NS, and WPAD |
-| **Tools and scripts** | Responder, Hydra, Hashcat, PowerShell/PowerPXE, nslookup, and custom Python scripts |
-| **Windows deployment and credentials** | PXE/MDT, configuration-file credential discovery, and McAfee SiteList password decryption |
+| **Active Directory protocols and services** | LDAP, DNS, Kerberos, NTLM/NetNTLM/NTLMv2, SMB/SYSVOL, LLMNR, NBT-NS, WPAD, RDP, and SSH |
+| **Enumeration tools** | MMC with RSAT AD snap-ins, Windows `net` commands, PowerShell Active Directory cmdlets, SharpHound, BloodHound, Neo4j, PowerView, and WMI |
+| **Initial access tools and scripts** | Responder, Hydra, Hashcat, PowerShell/PowerPXE, nslookup, and custom Python scripts |
+| **Credential access and deployment** | Runas `/netonly`, PXE/MDT, configuration-file credential discovery, and McAfee SiteList password decryption |
 | **Practice environment** | TryHackMe AttackBox and the Compromising Active Directory learning path |
 
 The technologies table lists tools and protocols documented in the walkthrough.
