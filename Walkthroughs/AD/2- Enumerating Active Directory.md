@@ -1,4 +1,7 @@
 
+![pasted-image-20261024110452](assets/pasted-image-20261024110452.png)
+
+![pasted-image-20261024002337](assets/pasted-image-20261024002337.png)
 
 ### 1- Why AD Enumeration
 This network is the continuation of the [Breaching AD](https://tryhackme.com/jr/breachingad) network. Please make sure to complete this network before continuing with this one. Also, note that we will discuss AD objects extensively. If you need a refresher, have a quick reskim of [this room.](https://tryhackme.com/jr/winadbasics) Now that we have our very first set of valid Active Directory (AD) credentials, we will explore the different methods that can be used to enumerate AD.  
@@ -9,7 +12,7 @@ Once we have that first set of AD credentials and the means to authenticate with
 
 During a red team engagement, this will usually lead to us being able to perform some form of privilege escalation or lateral movement to gain additional access until we have sufficient privileges to execute and reach our goals. In most cases, enumeration and exploitation are heavily entwined. Once an attack path shown by the enumeration phase has been exploited, enumeration is again performed from this new privileged position, as shown in the diagram below.
 
-![](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/ddd4bddb2db2285c3e42eef4c35b6211.png)  
+![](assets/ddd4bddb2db2285c3e42eef4c35b6211.png)  
 
   
 
@@ -142,7 +145,7 @@ In this task, we will explore our first enumeration method, which is the only me
 
 You can start MMC by using the Windows Start button, searching run, and typing in MMC. If we just run MMC normally, it would not work as our computer is not domain-joined, and our local account cannot be used to authenticate to the domain.
 
-![MMC failed start due to credentials](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/dd93acc5bf807d120eb083d2250e77ef.png)  
+![MMC failed start due to credentials](assets/dd93acc5bf807d120eb083d2250e77ef.png)  
 
 This is where the Runas window from the previous task comes into play. In that window, we can start MMC, which will ensure that all MMC network connections will use our injected AD credentials.  
 
@@ -165,7 +168,7 @@ In MMC, we can now attach the AD RSAT Snap-In:
 
 If everything up to this point worked correctly, your MMC should now be pointed to, and authenticated against, the target Domain:
 
-![MMC AD Snap-in](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/da8bba5a4df58baf0045d4a71db37e05.png)
+![MMC AD Snap-in](assets/da8bba5a4df58baf0045d4a71db37e05.png)
 
 We can now start enumerating information about the AD structure here.
 
@@ -173,19 +176,19 @@ Users and Computers
 
 Let's take a look at the Active Directory structure. For this task, we will focus on AD Users and Computers. Expand that snap-in and expand the za domain to see the initial Organisational Unit (OU) structure:
 
-![MMC AD Snap-in](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/a5fc9efbd6a77ee9ea72a25d7ba13240.png)
+![MMC AD Snap-in](assets/a5fc9efbd6a77ee9ea72a25d7ba13240.png)
 
 Let's take a look at the People directory. Here we see that the users are divided according to department OUs. Clicking on each of these OUs will show the users that belong to that department.
 
-![MMC AD Snap-in](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/993c161b6d86d61bf5ecc31a0ce0fa54.png)
+![MMC AD Snap-in](assets/993c161b6d86d61bf5ecc31a0ce0fa54.png)
 
 Clicking on any of these users will allow us to review all of their properties and attributes. We can also see what groups they are a member of:
 
-![MMC AD Snap-in](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/659127fd61749667192a19e0fb71ad55.png)
+![MMC AD Snap-in](assets/659127fd61749667192a19e0fb71ad55.png)
 
 We can also use MMC to find hosts in the environment. If we click on either Servers or Workstations, the list of domain-joined machines will be displayed.
 
-![MMC AD Snap-in](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/9e353f21616effb4a9cca2f3e86e65ad.png)
+![MMC AD Snap-in](assets/9e353f21616effb4a9cca2f3e86e65ad.png)
 
 If we had the relevant permissions, we could also use MMC to directly make changes to AD, such as changing the user's password or adding an account to a specific group. Play around with MMC to better understand the AD domain structure. Make use of the search feature to look for objects.  
 
@@ -652,7 +655,7 @@ Starting Neo4j.
 
 In another Terminal tab, run `bloodhound --no-sandbox`. This will show you the authentication GUI:
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/39f261aecedccbaf118eb2ee69d55129.png)  
+![Bloodhound](assets/39f261aecedccbaf118eb2ee69d55129.png)  
 
 The default credentials for the neo4j database will be `neo4j:neo4j`. Use this to authenticate in Bloodhound. To import our results, you will need to recover the ZIP file from the Windows host. The simplest way is to use SCP command on your AttackBox:
 
@@ -660,7 +663,7 @@ The default credentials for the neo4j database will be `neo4j:neo4j`. Use this t
 
 Once you provide your password, this will copy the results to your current working directory. Drag and drop the ZIP file onto the Bloodhound GUI to import into Bloodhound. It will show that it is extracting the files and initiating the import.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/d7bed860790aaca612cc658d19d782ef.png)  
+![Bloodhound](assets/d7bed860790aaca612cc658d19d782ef.png)  
 
 Once all JSON files have been imported, we can start using Bloodhound to enumerate attack paths for this specific domain.  
 
@@ -668,11 +671,11 @@ Once all JSON files have been imported, we can start using Bloodhound to enumera
 
 There are several attack paths that Bloodhound can show. Pressing the three stripes next to "Search for a node" will show the options. The very first tab shows us the information regarding our current imports.  
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/5d695d25afebc2b1dfc7cb408704e755.png)  
+![Bloodhound](assets/5d695d25afebc2b1dfc7cb408704e755.png)  
 
 Note that if you import a new run of Sharphound, it would cumulatively increase these counts. First, we will look at Node Info. Let's search for our AD account in Bloodhound. You must click on the node to refresh the view. Also note you can change the label scheme by pressing LeftCtrl.  
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/a6e1af6f79653eeedb18ac9c3be7a038.png)  
+![Bloodhound](assets/a6e1af6f79653eeedb18ac9c3be7a038.png)  
 
 We can see that there is a significant amount of information returned regarding our use. Each of the categories provides the following information:
 
@@ -694,15 +697,15 @@ We can see that there is a significant amount of information returned regarding 
 
 If you want more information in each of these categories, you can press the number next to the information query. For instance, let's look at the group membership associated with our account. By pressing the number next to "First Degree Group Membership", we can see that our account is a member of two groups.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/5912fb5bc22f7acfa8bc35f86329f0b4.png)  
+![Bloodhound](assets/5912fb5bc22f7acfa8bc35f86329f0b4.png)  
 
 Next, we will be looking at the Analysis queries. These are queries that the creators of Bloodhound have written themselves to enumerate helpful information.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/247be9dc8f34b8de181516199b0664dd.png)  
+![Bloodhound](assets/247be9dc8f34b8de181516199b0664dd.png)  
 
 Under the Domain Information section, we can run the Find all Domain Admins query. Note that you can press LeftCtrl to change the label display settings.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/9e4a7afd2acd099df71dc70d9eccf705.png)  
+![Bloodhound](assets/9e4a7afd2acd099df71dc70d9eccf705.png)  
 
 The icons are called nodes, and the lines are called edges. Let's take a deeper dive into what Bloodhound is showing us. There is an AD user account with the username of **T0_TINUS.GREEN**, that is a member of the group **Tier 0 ADMINS**. But, this group is a nested group into the **DOMAIN ADMINS** group, meaning all users that are part of the **Tier 0 ADMINS** group are effectively DAs.
 
@@ -710,15 +713,15 @@ Furthermore, there is an additional AD account with the username of **ADMINISTRA
 
 Each AD object that was discussed in the previous tasks can be a node in Bloodhound, and each will have a different icon depicting the type of object it is. If we want to formulate an attack path, we need to look at the available edges between the current position and privileges we have and where we want to go. Bloodhound has various available edges that can be accessed by the filter icon:
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/c21ccdbdd84a6e709d39fdff14764cea.png)  
+![Bloodhound](assets/c21ccdbdd84a6e709d39fdff14764cea.png)  
 
 These are also constantly being updated as new attack vectors are discovered. We will be looking at exploiting these different edges in a future network. However, let's look at the most basic attack path using only the default and some special edges. We will run a search in Bloodhound to enumerate the attack path. Press the path icon to allow for path searching.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/d3fab8519fda4ac61db80c35274c53a1.png)
+![Bloodhound](assets/d3fab8519fda4ac61db80c35274c53a1.png)
 
 Our Start Node would be our AD username, and our End Node will be the **Tier 1 ADMINS** group since this group has administrative privileges over servers.
 
-![Bloodhound](https://cdn-images.tryhackme.com/user-uploads/6093e17fa004d20049b6933e/room-content/b7ae2e4f8e1824e25e69fa69d95c4a4e.png)  
+![Bloodhound](assets/b7ae2e4f8e1824e25e69fa69d95c4a4e.png)  
 
 If there is no available attack path using the selected edge filters, Bloodhound will display "No Results Found". **Note, this may also be due to a Bloodhound/Sharphound mismatch, meaning the results were not properly ingested. Please make use of Bloodhound v4.1.0.** However, in our case, Bloodhound shows an attack path. It shows that one of the **T1 ADMINS, ACCOUNT,**  broke the tiering model by using their credentials to authenticate to **THMJMP1**, which is a workstation. It also shows that any user that is part of the **DOMAIN USERS** group, including our AD account, has the ability to RDP into this host.
 
