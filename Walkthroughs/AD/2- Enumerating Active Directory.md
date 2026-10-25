@@ -252,9 +252,9 @@ Country/region code          000 (System Default)
 Account active               Yes
 Account expires              Never
 
-Password last set            2/24/2022 10:06:06 PM
+Password last set            2/24/2026 10:06:06 PM
 Password expires             Never
-Password changeable          2/24/2022 10:06:06 PM
+Password changeable          2/24/2026 10:06:06 PM
 Password required            Yes
 User may change password     Yes
 
@@ -468,7 +468,7 @@ A more generic search for any AD objects can be performed using the `Get-ADObjec
 SSH PowerShell
 
 ```markup
-PS C:\> $ChangeDate = New-Object DateTime(2022, 02, 28, 12, 00, 00)
+PS C:\> $ChangeDate = New-Object DateTime(2026, 02, 28, 12, 00, 00)
 PS C:\> Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -includeDeletedObjects -Server za.tryhackme.com
 
 Deleted           :
@@ -597,16 +597,16 @@ SSHPowerShell
 
 ```markup
 PS C:\Users\gordon.stevens\Documents\>SharpHound.exe --CollectionMethods All --Domain za.tryhackme.com --ExcludeDCs
-2022-03-16T19:11:41.2898508+00:00|INFORMATION|Resolved Collection Methods: Group, LocalAdmin, GPOLocalGroup, Session, LoggedOn, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
-2022-03-16T19:11:41.3056683+00:00|INFORMATION|Initializing SharpHound at 7:11 PM on 3/16/2022
-2022-03-16T19:11:41.6648113+00:00|INFORMATION|Flags: Group, LocalAdmin, GPOLocalGroup, Session, LoggedOn, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
-2022-03-16T19:11:41.8211318+00:00|INFORMATION|Beginning LDAP search for za.tryhackme.com
+2026-03-16T19:11:41.2898508+00:00|INFORMATION|Resolved Collection Methods: Group, LocalAdmin, GPOLocalGroup, Session, LoggedOn, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
+2026-03-16T19:11:41.3056683+00:00|INFORMATION|Initializing SharpHound at 7:11 PM on 3/16/2026
+2026-03-16T19:11:41.6648113+00:00|INFORMATION|Flags: Group, LocalAdmin, GPOLocalGroup, Session, LoggedOn, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
+2026-03-16T19:11:41.8211318+00:00|INFORMATION|Beginning LDAP search for za.tryhackme.com
 [....]
-2022-03-16T19:12:31.6981568+00:00|INFORMATION|Output channel closed, waiting for output task to complete
+2026-03-16T19:12:31.6981568+00:00|INFORMATION|Output channel closed, waiting for output task to complete
 Closing writers
-2022-03-16T19:12:32.2605943+00:00|INFORMATION|Status: 2163 objects finished (+2163 43.26)/s -- Using 85 MB RAM
-2022-03-16T19:12:32.2605943+00:00|INFORMATION|Enumeration finished in 00:00:50.4369344
-2022-03-16T19:12:32.5418517+00:00|INFORMATION|SharpHound Enumeration Completed at 7:12 PM on 3/16/2022! Happy Graphing!
+2026-03-16T19:12:32.2605943+00:00|INFORMATION|Status: 2163 objects finished (+2163 43.26)/s -- Using 85 MB RAM
+2026-03-16T19:12:32.2605943+00:00|INFORMATION|Enumeration finished in 00:00:50.4369344
+2026-03-16T19:12:32.5418517+00:00|INFORMATION|SharpHound Enumeration Completed at 7:12 PM on 3/16/2026! Happy Graphing!
 ```
 
 It will take about 1 minute for Sharphound to perform the enumeration. In larger organisations, this can take quite a bit longer, even hours to execute for the first time. Once completed, you will have a timestamped ZIP file in the same folder you executed Sharphound from.
@@ -620,7 +620,7 @@ PS C:\Users\gordon.stevens\Documents> dir
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--a----        3/16/2022   7:12 PM         121027 20220316191229_BloodHound.zip
+-a----        3/16/2022   7:12 PM         121027 20260316191229_BloodHound.zip
 -a----        3/16/2022   5:19 PM         906752 SharpHound.exe
 -a----        3/16/2022   7:12 PM         360355 YzE4MDdkYjAtYjc2MC00OTYyLTk1YTEtYjI0NjhiZmRiOWY1.bin 
 ```
@@ -647,7 +647,7 @@ Directories in use:
   run:          /var/run/neo4j
 Starting Neo4j.
 [....]
-2022-03-13 19:59:18.014+0000 INFO  Bolt enabled on 127.0.0.1:7687.
+2026-03-13 19:59:18.014+0000 INFO  Bolt enabled on 127.0.0.1:7687.
 ```
 
 In another Terminal tab, run `bloodhound --no-sandbox`. This will show you the authentication GUI:
