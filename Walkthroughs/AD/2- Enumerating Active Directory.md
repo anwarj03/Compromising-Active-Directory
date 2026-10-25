@@ -1,6 +1,4 @@
 
-![pasted-image-20261024110452](assets/pasted-image-20261024110452.png)
-
 ![pasted-image-20261024002337](assets/pasted-image-20261024002337.png)
 
 ### 1- Why AD Enumeration
